@@ -6,7 +6,7 @@
     "test": "test",
     "start": "npm run server",
     "local": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node server.js",
+    "server": "node -r dotenv/config server.js",
     "client": "node start-client.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
