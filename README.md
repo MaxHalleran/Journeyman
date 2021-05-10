@@ -1,5 +1,3 @@
 # UJP
 
-This is from Max
-
-This is from josh
+A simple nested to do list app that can show lists in the form of Gant charts.
