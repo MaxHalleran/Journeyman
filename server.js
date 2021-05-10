@@ -3,9 +3,10 @@ const app = express();
 
 const port = ( process.env.PORT ? ( process.env.PORT === 3001 ? 3000 : 3001 ) : 3001 );
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-});
+// Express only serves static assets in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.use('/api', require('./routes/api/index'));
 
