@@ -5,8 +5,11 @@ const port = process.env.PORT || 3001;
 // API endpoint routes
 app.use('/api', require('./routes/api/index'));
 
+console.log(process.env.PGDATABASE);
+console.log(process.env.DATABASE_URL);
+
 // Express only serves static assets in production
-if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging") {
 
   // Client folder built
   app.use(express.static("client/build"));

@@ -1,14 +1,14 @@
 const router = require("express").Router();
 
 const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
 
-console.log(process.env.DATABASE_URL);
+const pool = new Pool();
 
 router.get('/', (req, res) => {
   res.send('This is the api route');
