@@ -5,8 +5,6 @@ const port = process.env.PORT || 3001;
 // API endpoint routes
 app.use('/api', require('./routes/api/index'));
 
-console.log(process.env.DATABASE_URL);
-
 // Express only serves static assets in production
 if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging") {
 

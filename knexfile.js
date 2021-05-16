@@ -8,7 +8,7 @@ module.exports = {
     connection: {
       host : '127.0.0.1',
       user : process.env.USER,
-      database : process.env.DATABASE_NAME
+      database : 'ujp'
     },
     migrations: {
       directory: './data/migrations',

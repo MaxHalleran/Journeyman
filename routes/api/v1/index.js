@@ -1,14 +1,5 @@
 const router = require("express").Router();
-
-const { Pool } = require('pg');
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
-// });
-
-const pool = new Pool();
+const db = require("../../../data/db.js");
 
 router.get('/', (req, res) => {
   res.send('This is the api route');
@@ -16,15 +7,12 @@ router.get('/', (req, res) => {
 
 router.get('/db', async (req, res) =>  {
   try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
-      const results = { 'results': (result) ? result.rows : null};
-      res.send( results );
-      client.release();
+        const database = await db("test");
+        res.json({ database });
     } catch (err) {
       console.error(err);
       res.send("Error " + err);
     }
-})
+});
 
 module.exports = router;
