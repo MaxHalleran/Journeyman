@@ -7,9 +7,8 @@ module.exports = {
     client: 'pg',
     connection: {
       host : '127.0.0.1',
-      user : 'max',
-      // password : 'your_database_password',
-      database : 'ujp'
+      user : process.env.USER,
+      database : process.env.DATABASE_NAME
     },
     migrations: {
       directory: './data/migrations',
@@ -38,6 +37,9 @@ module.exports = {
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
     // connection: {
     //   database: 'my_db',
     //   user:     'username',
