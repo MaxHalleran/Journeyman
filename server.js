@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging")
 } else {
 
   app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Error: Development environment accessed.');
   });
 
 }
