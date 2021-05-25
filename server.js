@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // API endpoint routes
-app.use('/api', require('./routes/api/index'));
+app.use('/api', require('./routes/api/api_index'));
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging") {
