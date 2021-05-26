@@ -11,18 +11,33 @@ let payload = {
 };
 
 async function hashDigest(pass) {
-	const hashedPassword = await new Promise((resolve, reject) => {
+	return await new Promise((resolve, reject) => {
 		bcrypt.hash(pass, 10, function(err, hash) {
 			if (err) reject(err)
 			resolve(hash)
 		});
-	})
-
-	return hashedPassword
+	});
 };
+
+async function validateEmail(email) {
+	if ( !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ) {
+		return { valid: false, message: 'Invalid email' };
+	} else {
+		return db.from('user').select( 'email' ).where({ email: email }).then( emailList => {
+			if ( emailList.length === 0 ) {
+				return { valid: true, message: 'Valid Email' };
+			}
+			console.log('not valid');
+			return { valid: false, message: 'Email already exists' };;
+		})
+	}
+}
 
 const token = jwt.sign(payload, secret);
 
+/**
+ * Top level here gets database for all users (for now)
+*/
 router.route('/') // Top level gets database
 	.get(async (req, res) => {
 		try {
@@ -34,6 +49,11 @@ router.route('/') // Top level gets database
 		};
 	});
 
+/**
+ * Register route
+ * Registers new users
+ * Needs to check if email already exists
+ */
 router.route('/register')
 	.get(async (req, res) => {
 		res.send("The register route");
@@ -48,17 +68,29 @@ router.route('/register')
 			last_name: ''
 		}
 
-		console.log(newUser);
+		console.log( newUser );
 
-		try {
-			db('user').insert( newUser )
-				.then( function (result) {
-					console.log(result);
-					res.json({ success: true, message: 'ok' });     // respond back to request
-				})
-		} catch (err) {
-			console.error(err);
-			res.send("Error " + err);
+		const validEmail = await validateEmail(newUser.email);
+
+		console.log( validEmail );
+
+		if ( validEmail.valid ) {
+			try {
+				db('user').insert( newUser )
+					.then( function ( result ) {
+						console.log( result );
+						res.json({ success: true, message: 'Account created' });     // respond back to request
+					})
+					.catch(function(error) {
+						console.error(error);
+						res.json({ success: false, message: 'Error: ' + error });
+					})
+			} catch ( err ) {
+				console.error( err );
+				res.json({ success: false, message: 'Error: ' + err });
+			}
+		} else {
+			res.json({ success: false, message: validEmail.message });
 		}
 	});
 
