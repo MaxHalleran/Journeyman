@@ -133,9 +133,10 @@ router.route('/logout')
 		res.send("The logout route");
 	});
 
-router.all('/token', auth_middleware);
+// router.all('/token', auth_middleware);
+
 router.route('/token')
-	.get(async (req, res) => {
+	.get(auth_middleware, async (req, res) => {
 		res.sendStatus(200);
 	})
 	.post(async (req, res) => {

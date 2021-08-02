@@ -1,5 +1,5 @@
 {
-	"name": "ujp",
+	"name": "journeyman",
 	"version": "0.1.0",
 	"main": "server.js",
 	"scripts": {
@@ -14,14 +14,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/MaxHalleran/UJP.git"
+		"url": "git+https://github.com/MaxHalleran/journeyman.git"
 	},
 	"author": "Max Halleran",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/MaxHalleran/UJP/issues"
+		"url": "https://github.com/MaxHalleran/journeyman/issues"
 	},
-	"homepage": "https://github.com/MaxHalleran/UJP#readme",
+	"homepage": "https://github.com/MaxHalleran/journeyman#readme",
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.12.0",
 		"@testing-library/react": "^11.2.6",
