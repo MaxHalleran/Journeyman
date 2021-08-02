@@ -1,7 +1,10 @@
 const express = require("express");
 const router = require("express").Router();
 const db = require("../../../data/db.js");
+const cookieParser = require('cookie-parser');
+const auth_middleware = require('./auth/auth_middleware');
 
+router.use(cookieParser());
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
@@ -20,5 +23,9 @@ router.get('/db', async (req, res) =>  {
       res.send("Error " + err);
     }
 });
+
+router.get('/restricted', auth_middleware, (req, res) => {
+  res.send("You're in!");
+})
 
 module.exports = router;

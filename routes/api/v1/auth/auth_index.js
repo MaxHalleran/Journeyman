@@ -5,10 +5,7 @@ const { default: knex } = require('knex');
 
 const secret = process.env.TOKEN_SECRET || 'secret';
 const db = require('../../../../data/db');
-
-let payload = {
-	foo: "bar"
-};
+const auth_middleware = require("./auth_middleware");
 
 async function hashDigest(pass) {
 	return await new Promise((resolve, reject) => {
@@ -33,8 +30,6 @@ async function validateEmail(email) {
 	}
 }
 
-const token = jwt.sign(payload, secret);
-
 /**
  * Top level here gets database for all users (for now)
 */
@@ -53,6 +48,9 @@ router.route('/') // Top level gets database
  * Register route
  * Registers new users
  * Needs to check if email already exists
+ * Body needs following parameters:
+ * email: string
+ * password: string
  */
 router.route('/register')
 	.get(async (req, res) => {
@@ -60,33 +58,23 @@ router.route('/register')
 	})
 	.post(async (req, res) => {
 		const passwordDigest = await hashDigest( req.body.password );
-
 		const newUser = {
 			email: req.body.email,
 			password_digest: passwordDigest,
 			first_name: '',
 			last_name: ''
 		}
-
-		console.log( newUser );
-
 		const validEmail = await validateEmail(newUser.email);
-
-		console.log( validEmail );
-
 		if ( validEmail.valid ) {
 			try {
 				db('user').insert( newUser )
 					.then( function ( result ) {
-						console.log( result );
 						res.json({ success: true, message: 'Account created' });     // respond back to request
 					})
 					.catch(function(error) {
-						console.error(error);
 						res.json({ success: false, message: 'Error: ' + error });
 					})
 			} catch ( err ) {
-				console.error( err );
 				res.json({ success: false, message: 'Error: ' + err });
 			}
 		} else {
@@ -99,7 +87,42 @@ router.route('/login')
 		res.send("The login route");
 	})
 	.post(async (req, res) => {
-		res.send("The login route");
+		const { email, password } = req.body;
+		if ( email ) {
+			try {
+				db('user').where({
+						email: email
+					}).select('password_digest')
+					.then( function ( user_info ) {
+						if (!user_info.length) {
+							res.json({ success: false, message: 'User does not exist.' });
+						} else {
+							bcrypt.compare(password, user_info[0].password_digest)
+							.then(function (result) {
+								if ( result ) {
+									let payload = {
+											email: email
+										};
+									const token = jwt.sign(payload, secret, {
+										expiresIn: '1h'
+									});
+									res.cookie('token', token, { httpOnly: true })
+										.sendStatus(200);
+								} else {
+									res.json({ success: false, message: 'Password did not match' });
+								}
+							});
+						}
+					})
+					.catch(function(error) {
+						console.error(error);
+						res.json({ success: false, message: 'Error: ' + error });
+					})
+			} catch ( err ) {
+				console.error( err );
+				res.json({ success: false, message: 'Error: ' + err });
+			}
+		};
 	});
 
 router.route('/logout')
@@ -110,9 +133,10 @@ router.route('/logout')
 		res.send("The logout route");
 	});
 
+router.all('/token', auth_middleware);
 router.route('/token')
 	.get(async (req, res) => {
-		res.send("The Token route");
+		res.sendStatus(200);
 	})
 	.post(async (req, res) => {
 		res.send("The Token route");
