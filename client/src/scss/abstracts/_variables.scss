@@ -1,0 +1,68 @@
+///
+/// Colors
+///
+$color--transparent: rgba(0,0,0,0);
+$color--white: #ffffff;
+$color--dark-grey: #333333;
+$color--grey: #909ca7;
+$color--straight-grey: #d9d9d9;
+$color--mint-green: #98ff98;
+$color--sky-blue: #87ceeb;
+
+///
+/// Gradients
+///
+$color-gradient--grey-dark-light: linear-gradient(to right, $color--dark-grey 0, $color--straight-grey 100%);
+
+///
+/// Border styling
+///
+$border-width: 1px;
+$border-style: solid;
+$border-radius--primary: 25px;
+$border-radius--soft: 5px;
+$border-color: #dddddd;
+
+///
+/// Font related variables
+///
+$font-size-base: 18px;
+$line-height-base: 1.2;
+
+///
+/// Max-width variables
+///
+$max-width--full: 2000px;
+$max-width--1600: 1600px;
+$max-width--1350: 1350px; 
+$max-width--container: 1200px;
+$max-width--1000: 1000px;
+$max-width--inner-content: 850px;
+
+///
+/// @include media keywords
+///
+$breakpoints: (
+	'xs-phone': 320px,
+	'phone': 480px,
+	'tablet': 768px,
+	'desktop': 1024px,
+	'widescreen': 1225px,
+	'wider-screen': 1400px,
+	'1600': 1600px,
+	'max-width': 2000px,
+	'massive-screen': 2800px
+);
+
+///
+/// keywords
+///
+$media-expressions: (
+	'screen': 'screen',
+	'print': 'print',
+	'handheld': 'handheld',
+	'landscape': '(orientation: landscape)',
+	'portrait': '(orientation: portrait)',
+	'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+	'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);

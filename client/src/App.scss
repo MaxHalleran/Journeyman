@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+
+// 1. Configuration and helpers
+// Imported first as helpers need to be defined highest in the stylesheet
+@import 'scss/abstracts/abstracts-dir';
+
+// 2. Vendors
+// Second so vendor styles can be overwritten if needed
+@import 'scss/vendors/vendors-dir';
+
+// 3. Base
+// After vendor to be able to overwrite some vendor styling
+@import 'scss/base/base-dir';
+
+// 4. Layout Related Sections
+@import 'scss/layout/layout-dir';
+
+// 5. Components
+@import 'scss/components/components-dir';
+
+// 6. Page Specific Styles
+@import 'scss/pages/pages-dir';
+
+// 7. Utility
+@import 'scss/utility/utility-dir';
+
+// 7. Theme
+@import 'scss/theme/theme-dir';

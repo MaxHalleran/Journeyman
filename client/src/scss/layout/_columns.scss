@@ -1,0 +1,50 @@
+/*
+	Columns
+	For naming fairly standardised size conventions. 
+*/
+
+%cl-column {
+	display: inline-block;
+}
+
+.md-column {
+
+	&--7 {
+		width: calc(58.3% - 20px);
+		@extend %cl-column;
+
+		@include media("<tablet") {
+			width: 100%;
+		}
+	}
+	
+	&--half {
+		width: calc(50% - 20px);
+		@extend %cl-column;
+
+		@include media("<tablet") {
+			width: 100%;
+		}
+	}
+
+	&--5 {
+		width: calc(41.6% - 20px);
+		@extend %cl-column;
+
+		@include media("<tablet") {
+			width: 83.3%;
+		}
+	}
+
+	&--4 {
+		width: calc(33% - 20px);
+		@extend %cl-column;
+	}
+
+	&--3 {
+		width: calc(25% - 20px);
+		@extend %cl-column;
+	}
+
+	// Etc.
+}

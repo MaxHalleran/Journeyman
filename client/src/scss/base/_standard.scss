@@ -1,0 +1,14 @@
+body {
+    max-width: $max-width--full;
+    min-width: 320px;
+    margin: auto;
+    @include box-shadow;
+    color: $color--dark-grey;
+    text-align: left;
+    font: 300 20px/1.5 roboto, Arial, Helvetica, sans-serif;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
