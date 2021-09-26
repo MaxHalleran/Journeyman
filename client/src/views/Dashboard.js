@@ -2,8 +2,8 @@ function Dashboard() {
   return (
     <div className="md-loading-widget">
       <p>
-		Dashboard
-	  </p>
+        Dashboard
+	    </p>
     </div>
   );
 }
