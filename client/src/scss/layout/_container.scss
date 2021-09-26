@@ -1,0 +1,7 @@
+.md-container {
+    max-width: $max-width--container;
+    margin: 0 auto;
+    @include media("<widescreen") {
+        padding: 20px;
+    }
+}

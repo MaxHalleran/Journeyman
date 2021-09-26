@@ -87,6 +87,8 @@ router.route('/login')
 		res.send("The login route");
 	})
 	.post(async (req, res) => {
+		console.log("Accessed");
+
 		const { email, password } = req.body;
 		if ( email ) {
 			try {
