@@ -1,3 +1,4 @@
+"use strict";
 var jwt = require('jsonwebtoken');
 var secret = process.env.TOKEN_SECRET || 'secret';
 var withAuth = function (req, res, next) {

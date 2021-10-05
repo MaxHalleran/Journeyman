@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,7 +35,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 var router = require('express').Router();
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
@@ -83,7 +83,7 @@ function validateEmail(email) {
  * Top level here gets database for all users (for now)
 */
 router.route('/') // Top level gets database
-    .get(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var database, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -114,13 +114,13 @@ router.route('/') // Top level gets database
  * password: string
  */
 router.route('/register')
-    .get(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The register route");
         return [2 /*return*/];
     });
 }); })
-    .post(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .post(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var passwordDigest, newUser, validEmail;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -158,13 +158,13 @@ router.route('/register')
     });
 }); });
 router.route('/login')
-    .get(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The login route");
         return [2 /*return*/];
     });
 }); })
-    .post(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .post(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, email, password;
     return __generator(this, function (_b) {
         console.log("Accessed");
@@ -212,13 +212,13 @@ router.route('/login')
     });
 }); });
 router.route('/logout')
-    .get(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The logout route");
         return [2 /*return*/];
     });
 }); })
-    .post(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .post(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The logout route");
         return [2 /*return*/];
@@ -226,13 +226,13 @@ router.route('/logout')
 }); });
 // router.all('/token', auth_middleware);
 router.route('/token')
-    .get(auth_middleware, function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .get(auth_middleware, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.sendStatus(200);
         return [2 /*return*/];
     });
 }); })
-    .post(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    .post(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The Token route");
         return [2 /*return*/];

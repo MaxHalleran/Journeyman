@@ -1,3 +1,4 @@
+"use strict";
 exports.up = function (knex) {
     return knex.schema.createTable('employees', function (tbl) {
         tbl.integer('user_id').notNullable().references('id').inTable('user').onDelete('cascade');

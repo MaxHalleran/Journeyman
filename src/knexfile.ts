@@ -1,4 +1,8 @@
-module.exports = {
+// import { Knex } from "knex";
+
+// const config: Knex.Config = {
+
+const config = {
 
 	// local environment
 	development: {
@@ -13,7 +17,7 @@ module.exports = {
 		},
 		seeds: { directory: "./data/seeds" },
 	},
-
+	
 	// staging environment
 	staging: {
 		client: "pg",
@@ -44,3 +48,5 @@ module.exports = {
 		seeds: { directory: "./data/seeds" },
 	},
 };
+
+export default config;
