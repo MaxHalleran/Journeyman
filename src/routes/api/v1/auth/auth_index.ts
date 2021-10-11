@@ -1,13 +1,15 @@
-const router = require('express').Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import express from "express";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+const auth_index_router = express.Router();
 const { default: knex } = require('knex');
 
 const secret = process.env.TOKEN_SECRET || 'secret';
 const db = require('../../../../data/db');
 const auth_middleware = require("./auth_middleware");
 
-async function hashDigest(pass) {
+async function hashDigest(pass: string) {
 	return await new Promise((resolve, reject) => {
 		bcrypt.hash(pass, 10, function(err, hash) {
 			if (err) reject(err)
@@ -16,11 +18,11 @@ async function hashDigest(pass) {
 	});
 };
 
-async function validateEmail(email) {
+async function validateEmail(email: string) {
 	if ( !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ) {
 		return { valid: false, message: 'Invalid email' };
 	} else {
-		return db.from('user').select( 'email' ).where({ email: email }).then( emailList => {
+		return db.from('user').select( 'email' ).where({ email: email }).then( (emailList: string[]) => {
 			if ( emailList.length === 0 ) {
 				return { valid: true, message: 'Valid Email' };
 			}
@@ -33,7 +35,7 @@ async function validateEmail(email) {
 /**
  * Top level here gets database for all users (for now)
 */
-router.route('/') // Top level gets database
+auth_index_router.route('/') // Top level gets database
 	.get(async (req, res) => {
 		try {
 			const database = await db("user");
@@ -52,7 +54,7 @@ router.route('/') // Top level gets database
  * email: string
  * password: string
  */
-router.route('/register')
+auth_index_router.route('/register')
 	.get(async (req, res) => {
 		res.send("The register route");
 	})
@@ -68,10 +70,10 @@ router.route('/register')
 		if ( validEmail.valid ) {
 			try {
 				db('user').insert( newUser )
-					.then( function ( result ) {
+					.then( function ( result: any ) {
 						res.json({ success: true, message: 'Account created' });     // respond back to request
 					})
-					.catch(function(error) {
+					.catch(function(error: any) {
 						res.json({ success: false, message: 'Error: ' + error });
 					})
 			} catch ( err ) {
@@ -82,7 +84,7 @@ router.route('/register')
 		}
 	});
 
-router.route('/login')
+auth_index_router.route('/login')
 	.get(async (req, res) => {
 		res.send("The login route");
 	})
@@ -95,7 +97,7 @@ router.route('/login')
 				db('user').where({
 						email: email
 					}).select('password_digest')
-					.then( function ( user_info ) {
+					.then( function ( user_info: any[] ) {
 						if (!user_info.length) {
 							res.json({ success: false, message: 'User does not exist.' });
 						} else {
@@ -116,7 +118,7 @@ router.route('/login')
 							});
 						}
 					})
-					.catch(function(error) {
+					.catch(function(error: any) {
 						console.error(error);
 						res.json({ success: false, message: 'Error: ' + error });
 					})
@@ -127,7 +129,7 @@ router.route('/login')
 		};
 	});
 
-router.route('/logout')
+auth_index_router.route('/logout')
 	.get(async (req, res) => {
 		res.send("The logout route");
 	})
@@ -135,9 +137,9 @@ router.route('/logout')
 		res.send("The logout route");
 	});
 
-// router.all('/token', auth_middleware);
+// auth_index_router.all('/token', auth_middleware);
 
-router.route('/token')
+auth_index_router.route('/token')
 	.get(auth_middleware, async (req, res) => {
 		res.sendStatus(200);
 	})
@@ -145,4 +147,4 @@ router.route('/token')
 		res.send("The Token route");
 	});
 
-module.exports = router;
+module.exports = auth_index_router;

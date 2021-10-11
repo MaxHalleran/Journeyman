@@ -1,7 +1,3 @@
-// import { Knex } from "knex";
-
-// const config: Knex.Config = {
-
 const config = {
 
 	// local environment

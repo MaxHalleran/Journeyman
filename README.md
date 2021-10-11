@@ -10,6 +10,35 @@ You must have Node, Npm and Typescript installed globally. Using the command lin
 
 The Journeyman App is now running a local version.
 
+### NPM Scripts
+
+There are a number of npm scripts in the package.json file. Some of these scripts are ran concurrently with other scripts and allow for more complex functionality to be ran simutaneously with one console command.
+
+#### Single purpose scripts
+
+* **test**
+	* runs tests
+* **start**
+	* runs the server script
+* **prettier**
+	* Runs prettier
+* **server**
+	* Runs the server script from within the build folder
+* **client**
+	* runs the top level start client script which starts the react client application
+* **build-tsc**
+	* Builds typescript once
+* **start-tsc**
+	* Watches for changes to the project to run build-tsc
+* **localserver2**
+	* Starts the build server using node and the dotenv/config file
+* **localserver**
+	* Starts the build server using nodemon allowing for hot reloading
+* **local**
+	* Concurrently run the local server, client and start-tsc 
+* **heroku-postbuild**
+	* Used by heroku after a commit has been pulled, moves into the client folder, installs client dependencies and builds the client for production
+
 ## TODO
 
 * Auth

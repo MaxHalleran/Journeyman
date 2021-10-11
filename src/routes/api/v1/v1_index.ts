@@ -1,8 +1,9 @@
-const express = require("express");
-const router = require("express").Router();
-const db = require("../../../data/db.js");
-const cookieParser = require('cookie-parser');
-const auth_middleware = require('./auth/auth_middleware');
+import express from "express";
+import db from "../../../data/db.js";
+import cookieParser from "cookie-parser";
+import auth_middleware from './auth/auth_middleware';
+
+const router = express.Router();
 
 router.use(cookieParser());
 router.use(express.json());
@@ -28,4 +29,4 @@ router.get('/restricted', auth_middleware, (req, res) => {
   res.send("You're in!");
 })
 
-module.exports = router;
+export default router;
