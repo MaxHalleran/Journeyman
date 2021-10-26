@@ -1,38 +1,56 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Login from './AuthStack/Login';
-import Register from './AuthStack/Register';
-import Recover from './AuthStack/Recover';
+import Login from '../components/AuthStack/Login';
+import Register from '../components/AuthStack/Register';
+import Recover from '../components/AuthStack/Recover';
 
 export default class AuthStack extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.changeView = this.changeView.bind(this);
-
 		this.state = {
-			currentView: 'login',
+			cookie: props.cookie
 		};
 	}
 
-	changeView(view) {
-		this.setState({ currentView: view });
-	};
-
 	render() {
-		if ( this.state.currentView === 'register') {
+		console.log(this.state.cookie)
 
-			return ( <Register changeView={this.changeView} /> );
+		return (
+			<Router>
+			<div>
+				<nav>
+				<ul>
+					<li>
+					<Link to="/">Home</Link>
+					</li>
+					<li>
+					<Link to="/recover">About</Link>
+					</li>
+					<li>
+					<Link to="/users">Users</Link>
+					</li>
+				</ul>
+				</nav>
 
-		} else if ( this.state.currentView === 'recover' ) {
-
-			return ( <Recover changeView={this.changeView} /> );
-
-		} else {
-
-			return ( <Login changeView={this.changeView} /> );
-
-		}
+				<Switch>
+					<Route path="/users">
+						<Register />
+					</Route>
+					<Route path="/recover">
+						<Recover />
+					</Route>
+					<Route path="/login">
+						<Login />
+					</Route>
+					<Route path="/">
+						<Login />
+					</Route>
+				</Switch>
+			</div>
+			</Router>
+		);
 	}
 
 }

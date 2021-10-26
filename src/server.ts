@@ -1,12 +1,12 @@
 import express from "express";
-import { Knex } from "knex";
+import apiRoutes from "./routes/api/api_index.js";
 
-const app = express();
-// import { Request, Response } from "express";ˇ
 const port = process.env.PORT || 3001;
 
+const app = express();
+
 // API endpoint routes
-app.use('/api', require('./routes/api/api_index'));
+app.use('/api', apiRoutes);
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging") {
@@ -23,9 +23,5 @@ if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging")
 }
 
 app.listen(port, () => {
-
-	console.log("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-	console.log(Knex);
-
 	console.log(`Example app listening at http://localhost:${port}`)
 });

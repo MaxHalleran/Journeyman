@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,13 +34,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var router = require('express').Router();
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
-var knex = require('knex').default;
+import express from "express";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+var auth_index_router = express.Router();
+// const { default: knex } = require('knex');
+// import { default: knex } from 'knex';
 var secret = process.env.TOKEN_SECRET || 'secret';
-var db = require('../../../../data/db');
-var auth_middleware = require("./auth_middleware");
+// const db = require('../../../../data/db');
+import db from '../../../../data/db.js';
 function hashDigest(pass) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -82,7 +83,7 @@ function validateEmail(email) {
 /**
  * Top level here gets database for all users (for now)
 */
-router.route('/') // Top level gets database
+auth_index_router.route('/') // Top level gets database
     .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var database, err_1;
     return __generator(this, function (_a) {
@@ -113,7 +114,7 @@ router.route('/') // Top level gets database
  * email: string
  * password: string
  */
-router.route('/register')
+auth_index_router.route('/register')
     .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The register route");
@@ -157,7 +158,7 @@ router.route('/register')
         }
     });
 }); });
-router.route('/login')
+auth_index_router.route('/login')
     .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The login route");
@@ -211,7 +212,7 @@ router.route('/login')
         return [2 /*return*/];
     });
 }); });
-router.route('/logout')
+auth_index_router.route('/logout')
     .get(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("The logout route");
@@ -224,18 +225,12 @@ router.route('/logout')
         return [2 /*return*/];
     });
 }); });
-// router.all('/token', auth_middleware);
-router.route('/token')
-    .get(auth_middleware, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        res.sendStatus(200);
-        return [2 /*return*/];
-    });
-}); })
-    .post(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        res.send("The Token route");
-        return [2 /*return*/];
-    });
-}); });
-module.exports = router;
+// auth_index_router.all('/token', auth_middleware);
+// auth_index_router.route('/token')
+// 	.get(auth_middleware, async (req, res) => {
+// 		res.sendStatus(200);
+// 	})
+// 	.post(async (req, res) => {
+// 		res.send("The Token route");
+// 	});
+export default auth_index_router;

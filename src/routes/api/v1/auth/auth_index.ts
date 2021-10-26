@@ -3,11 +3,14 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 const auth_index_router = express.Router();
-const { default: knex } = require('knex');
+// const { default: knex } = require('knex');
+// import { default: knex } from 'knex';
 
 const secret = process.env.TOKEN_SECRET || 'secret';
-const db = require('../../../../data/db');
-const auth_middleware = require("./auth_middleware");
+// const db = require('../../../../data/db');
+import db from '../../../../data/db.js';
+// const auth_middleware = require("./auth_middleware");
+import auth_middleware from "./auth_middleware.js";
 
 async function hashDigest(pass: string) {
 	return await new Promise((resolve, reject) => {
@@ -139,12 +142,12 @@ auth_index_router.route('/logout')
 
 // auth_index_router.all('/token', auth_middleware);
 
-auth_index_router.route('/token')
-	.get(auth_middleware, async (req, res) => {
-		res.sendStatus(200);
-	})
-	.post(async (req, res) => {
-		res.send("The Token route");
-	});
+// auth_index_router.route('/token')
+// 	.get(auth_middleware, async (req, res) => {
+// 		res.sendStatus(200);
+// 	})
+// 	.post(async (req, res) => {
+// 		res.send("The Token route");
+// 	});
 
-module.exports = auth_index_router;
+export default auth_index_router;

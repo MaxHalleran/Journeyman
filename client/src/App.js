@@ -1,39 +1,37 @@
 import React from 'react';
-import './App.scss';
+
 import LoadingWidget from './views/LoadingWidget';
 import AuthStack from './views/AuthStack';
 import Dashboard from './views/Dashboard';
 
-function checkCookie() {
-  console.log("Hello cookies")
-  return false;
-}
+import authHelper from './utils/auth_utils';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoadingComplete: true,
+      isLoading: true,
+      cookie: false,
     };
   }
 
-  render() {
-    if (this.state.isLoadingComplete) {
+  componentDidMount() {
+    this.setState( { cookie : authHelper.checkCookie() });
+    this.setState( { isLoading : false });
+  }
 
-      if ( checkCookie() ) {
-        return (
-          <Dashboard />
-        );
-      } else {
-        return (
-          <AuthStack />
-        );
-      }
+  render() {
+
+    // Check if loading is complete
+    if (this.state.isLoading) {
+      return <LoadingWidget />;
 
     } else {
       return (
-        <LoadingWidget />
-      );
+        this.state.cookie ? 
+        <Dashboard cookie={this.state.cookie} /> : 
+        <AuthStack />
+      )
     }
   }
 }

@@ -53,6 +53,7 @@ export default class Login extends React.Component {
                         type="email"
                         name="email"
                         placeholder="Enter email"
+                        autoComplete="email"
                         value={this.state.email}
                         onChange={this.handleInputChange}
                         required
@@ -61,6 +62,7 @@ export default class Login extends React.Component {
                         type="password"
                         name="password"
                         placeholder="Enter password"
+                        autoComplete="current-password"
                         value={this.state.password}
                         onChange={this.handleInputChange}
                         required

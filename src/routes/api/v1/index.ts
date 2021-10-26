@@ -1,8 +1,9 @@
 import express from "express";
 import { Request, Response, NextFunction } from "express";
-import db from "../../../data/db.js";
 import cookieParser from "cookie-parser";
-import auth_middleware from './auth/auth_middleware';
+import db from "../../../data/db.js";
+import auth_middleware from './auth/auth_middleware.js';
+import auth_index from "./auth/auth_index.js";
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/', (req: Request, res: Response) => {
   res.send('This is the api route');
 });
 
-router.use('/auth', require('./auth/auth_index'));
+router.use('/auth', auth_index);
 
 router.get('/db', async (req: Request, res: Response) =>  {
   try {

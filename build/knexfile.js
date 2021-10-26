@@ -1,5 +1,4 @@
-"use strict";
-module.exports = {
+var config = {
     // local environment
     development: {
         client: "pg",
@@ -42,3 +41,4 @@ module.exports = {
         seeds: { directory: "./data/seeds" },
     },
 };
+export default config;
