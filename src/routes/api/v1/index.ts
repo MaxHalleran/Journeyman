@@ -1,7 +1,7 @@
 import express from "express";
 import { Request, Response, NextFunction } from "express";
 import cookieParser from "cookie-parser";
-import db from "../../../data/db.js";
+import db from "../../../../data/db.js";
 import auth_middleware from './auth/auth_middleware.js';
 import auth_index from "./auth/auth_index.js";
 

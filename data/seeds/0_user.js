@@ -26,6 +26,13 @@ exports.seed = function(knex) {
           first_name: 'Luna',
           last_name: 'Lovewhore'
         },
+		{
+          id: 4,
+          email: 'maxhalleran@gmail.com',
+          password_digest: 'password',
+          first_name: 'Max',
+          last_name: 'Halleran'
+        },
       ]);
     });
 };

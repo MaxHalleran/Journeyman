@@ -8,7 +8,7 @@ const auth_index_router = express.Router();
 
 const secret = process.env.TOKEN_SECRET || 'secret';
 // const db = require('../../../../data/db');
-import db from '../../../../data/db.js';
+import db from '../../../../../data/db.js';
 // const auth_middleware = require("./auth_middleware");
 import auth_middleware from "./auth_middleware.js";
 
