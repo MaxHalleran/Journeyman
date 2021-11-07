@@ -46,30 +46,34 @@ export default class Login extends React.Component {
 
     render () {
         return (
-            <div className="md-auth-stack md-login-form">
-                <form onSubmit={this.onSubmit}>
-                    <h1>Login Below!</h1>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter email"
-                        autoComplete="email"
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter password"
-                        autoComplete="current-password"
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                <input type="submit" value="Submit"/>
-                </form>
-            </div>
+            <form className="md-auth-form__container" onSubmit={this.onSubmit}>
+                <h2 className="md-auth-form__title">Login</h2>
+                <input
+                    className="md-auth-form__input"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    autoComplete="email"
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                    required
+                />
+                <input
+                    className="md-auth-form__input"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    autoComplete="current-password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    required
+                />
+                <input
+                    className="md-auth-form__submit md-auth__button"
+                    type="submit"
+                    value="Submit"
+                />
+            </form>
         );
     }
 };

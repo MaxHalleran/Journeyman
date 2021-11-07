@@ -1,0 +1,183 @@
+
+
+.md-auth__ {
+	&page {
+		background-color: #f2f2f2;
+		background-color: #e6e9e4;
+		width: 100%;
+		max-width: unset;
+		min-height: 100vh;
+		padding: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	&title-container {
+		width: 100%;
+		padding-top: 70px;
+	}
+	&title {
+		color: #0D0D0D;
+		color: #0D171A;
+		text-align: center;	
+		font-family: 'Libre Baskerville', serif;
+		font-family: 'Roboto Slab', serif;
+		font-family: 'Roboto', sans-serif;
+		font-size: 100px;
+		font-weight: 800;
+	}
+	&button-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	&link {
+		margin: 25px 25px 0 25px;
+	}
+
+	&button {
+		// Button Styles
+		@include border($border-color: #595959, $border-radius: 50px, $border-width: 3px);
+		padding: 10px 50px;
+		background-color: #A6A6A6;
+		min-width: 220px;
+
+		// Style Behaviour
+		transition: all 0.2s ease-out;
+		cursor: pointer;
+
+		// Font
+		font-family: 'Roboto', sans-serif;
+		font-size: 30px;
+		font-weight: 400;
+		color: #262A2A;
+		color: #0D171A;
+
+		&:hover {
+			@include border($border-color: #262626, $border-radius: 50px, $border-width: 3px);
+			background-color: #595959;
+			color: #e6e9e4;
+			box-shadow: inset -10px -10px 20px 5px rgba(0, 0, 0, 0.3)
+		}
+	}
+
+	&link-text {
+		font-size: 20px;
+	}
+}
+
+.md-auth-form__ {
+	&container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		margin: 25px 25px 0 25px;
+	}
+	&title {
+		font-family: 'Roboto', sans-serif;
+		font-size: 30px;
+		font-weight: 400;
+		color: #262A2A;
+		color: #0D171A;
+		padding: 13px 50px;
+	}
+	&input {
+		@include border($border-color: #262626, $border-radius: 50px, $border-width: 3px);
+		background-color: #F2F2F2;
+		text-align: center;
+		font-size: 20px;
+		padding: 13px 50px;
+		margin: 25px 25px 0 25px;
+	}
+	&submit {
+		margin-top: 25px;
+	}
+}
+
+@include media('<800px') {
+	.md-auth__ {
+		&page {}
+		&title-container {}
+		&title {
+			font-size: 80px;
+		}
+		&button-container {}
+		&link {}
+		&button {
+			&:hover {}
+		}
+		&link-text {}
+	}	
+	.md-auth-form__ {
+		&container {}
+		&title {}
+		&input {}
+		&submit {}
+	}
+}
+
+@include media('<600px') {
+	.md-auth__ {
+		&title{
+			font-size: 65px;
+		}
+		&button {
+			padding: 6px 30px;
+			min-width: 190px;
+			font-size: 28px;
+		}
+		&link-text {
+			font-size: 18px;
+		}
+	}
+
+	.md-auth-form__ {
+		&title {
+			font-size: 30px;
+			padding: 13px 50px;
+			text-align: center;
+		}
+		&input {
+			padding: 6px 30px;
+			margin: 25px 25px 0 25px;
+			font-size: 20px;
+		}
+		&submit {
+			margin-top: 25px;
+		}
+	}
+}
+
+@include media('<480px') {
+	.md-auth__ {
+		&buttons-container {
+			align-items: stretch;
+		}
+		&title{
+			font-size: 38px;
+		}
+		&button {
+			padding: 6px 30px;
+			min-width: 190px;
+			font-size: 20px;
+		}
+		&link-text {
+			font-size: 16px;
+		}
+	}
+}
+
+@include media('<321px') {
+	.md-auth__ {
+		&title{
+			font-size: 38px;
+		}
+	}
+	&button {
+			&:hover {}
+		}
+		&link-text {}
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LoadingWidget from './views/LoadingWidget';
-import AuthStack from './views/AuthStack';
+import AuthStack from './views/AuthStack/AuthStack';
 import Dashboard from './views/Dashboard';
 
 import authHelper from './utils/auth_utils';
