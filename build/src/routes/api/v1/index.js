@@ -35,9 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import express from "express";
-import db from "../../../data/db.js";
 import cookieParser from "cookie-parser";
-import auth_middleware from './auth/auth_middleware';
+import db from "../../../../data/db.js";
+import auth_middleware from './auth/auth_middleware.js';
+import auth_index from "./auth/auth_index.js";
 var router = express.Router();
 router.use(cookieParser());
 router.use(express.json());
@@ -45,7 +46,7 @@ router.use(express.urlencoded({ extended: true }));
 router.get('/', function (req, res) {
     res.send('This is the api route');
 });
-router.use('/auth', require('./auth/auth_index'));
+router.use('/auth', auth_index);
 router.get('/db', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var database, err_1;
     return __generator(this, function (_a) {

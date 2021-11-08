@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging")
 	// Client folder built
 	app.use(express.static("client/build"));
 
-} else {
+} else { 
 
 	app.get('/', (req, res) => {
 		res.send('Error: Development environment accessed.');

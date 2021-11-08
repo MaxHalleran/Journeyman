@@ -1,6 +1,8 @@
 {
 	"compilerOptions": {
 		"outDir": "build",
+		// "sourceMap": true,
+		// "sourceRoot": "src",
 		"allowJs": true,
 		"target": "es5",
 		"jsx": "react-jsx",
@@ -22,8 +24,7 @@
 		"noImplicitAny": false,
 	},
 	"include": [
-		"src/**/*", "data",
-		// "./client/**/*"
+		"src/",
 	],
 	"exclude": [
 		"node_modules"

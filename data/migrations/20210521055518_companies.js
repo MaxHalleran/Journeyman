@@ -1,11 +1,10 @@
-
-exports.up = function(knex) {
+export function up(knex) {
 	return knex.schema.createTable('company', function(tbl) {
 		tbl.increments('id');
 		tbl.string('company_name');
 	});
-};
+}
 
-exports.down = function(knex) {
+export function down(knex) {
 	return knex.schema.dropTableIfExists('company');
-};
+}

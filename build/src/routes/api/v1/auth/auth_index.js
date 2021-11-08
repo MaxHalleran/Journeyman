@@ -42,7 +42,7 @@ var auth_index_router = express.Router();
 // import { default: knex } from 'knex';
 var secret = process.env.TOKEN_SECRET || 'secret';
 // const db = require('../../../../data/db');
-import db from '../../../../data/db.js';
+import db from '../../../../../data/db.js';
 function hashDigest(pass) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
