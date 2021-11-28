@@ -3,7 +3,7 @@ body {
     min-width: 320px;
     margin: auto;
     @include box-shadow;
-    color: $color--dark-grey;
+    color: $color--black;
     text-align: left;
     font: 300 20px/1.5 roboto, Arial, Helvetica, sans-serif;
 }

@@ -1,4 +1,4 @@
-@mixin box-shadow($x-offset: 0, $y-offset: 0, $blur: 5px, $spread-radius: 0, $color: $color--grey) {
+@mixin box-shadow($x-offset: 0, $y-offset: 0, $blur: 5px, $spread-radius: 0, $color: $color--medium) {
 	box-shadow: $x-offset $y-offset $blur $spread-radius $color;
 }
 

@@ -29,8 +29,8 @@ export default class AuthStack extends React.Component {
 			<main className="md-container md-auth__page">
 
 				{/* Title / Container */}
-				<div className="md-auth__title-container">
-					<h1 className="md-auth__title">Journeyman</h1>
+				<div className="md-auth--title__container">
+					<h1 className="md-auth-title__title">Journeyman</h1>
 				</div>
 				
 				<Router>
@@ -41,11 +41,8 @@ export default class AuthStack extends React.Component {
 						<Route path="/recover">
 							<Recover />
 						</Route>
-						<Route path="/login">
-							<Login />
-						</Route>
 						<Route path="/">
-							<Buttons />
+							<Login />
 						</Route>
 					</Switch>
 

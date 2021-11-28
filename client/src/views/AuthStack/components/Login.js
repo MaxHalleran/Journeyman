@@ -30,8 +30,6 @@ export default class Login extends React.Component {
                 console.log("Props: ", this);
                 console.log( "Response: ", res );
 
-                this.props.changeView('login');
-
                 // this.props.history.push('/');
             } else {
             const error = new Error(res.error);
@@ -46,34 +44,38 @@ export default class Login extends React.Component {
 
     render () {
         return (
-            <form className="md-auth-form__container" onSubmit={this.onSubmit}>
-                <h2 className="md-auth-form__title">Login</h2>
-                <input
-                    className="md-auth-form__input"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    autoComplete="email"
-                    value={this.state.email}
-                    onChange={this.handleInputChange}
-                    required
-                />
-                <input
-                    className="md-auth-form__input"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    autoComplete="current-password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                    required
-                />
-                <input
-                    className="md-auth-form__submit md-auth__button"
-                    type="submit"
-                    value="Submit"
-                />
-            </form>
+            <div>
+                <p className="md-auth-title__subheader">Log in to your account</p>
+                <form className="md-auth-form__container" onSubmit={this.onSubmit}>
+                    <label className="md-auth-form__label" htmlFor="email">Email</label>
+                    <input
+                        className="md-auth-form__input"
+                        type="email"
+                        name="email"
+                        // placeholder="Email"
+                        autoComplete="email"
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                        required
+                    />
+                    <label className="md-auth-form__label" htmlFor="password">Password</label>
+                    <input
+                        className="md-auth-form__input"
+                        type="password"
+                        name="password"
+                        // placeholder="Password"
+                        autoComplete="current-password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        required
+                    />
+                    <input
+                        className="md-auth-form__submit md-auth__button"
+                        type="submit"
+                        value="Log In"
+                    />
+                </form>
+            </div>
         );
     }
 };

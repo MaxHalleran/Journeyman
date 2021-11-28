@@ -2,17 +2,22 @@
 /// Colors
 ///
 $color--transparent: rgba(0,0,0,0);
-$color--white: #ffffff;
-$color--dark-grey: #333333;
-$color--grey: #909ca7;
-$color--straight-grey: #d9d9d9;
-$color--mint-green: #98ff98;
-$color--sky-blue: #87ceeb;
+$color--white: #F2F2F2;
+$color--light: #A6A6A6;
+$color--medium: #595959;
+$color--dark: #262626;
+$color--black: #0D0D0D;
+
+$color--white-metal: #E6E9E4;
+$color--light-metal: #ADA59F;
+$color--medium-metal: #505457;
+$color--dark-metal: #262A2A;
+$color--black-metal: #0D171A;
 
 ///
 /// Gradients
 ///
-$color-gradient--grey-dark-light: linear-gradient(to right, $color--dark-grey 0, $color--straight-grey 100%);
+// $color-gradient--grey-dark-light: linear-gradient(to right, $color--dark-grey 0, $color--straight-grey 100%);
 
 ///
 /// Border styling
@@ -21,7 +26,7 @@ $border-width: 1px;
 $border-style: solid;
 $border-radius--primary: 25px;
 $border-radius--soft: 5px;
-$border-color: #dddddd;
+$border-color: $color--dark;
 
 ///
 /// Font related variables
