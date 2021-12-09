@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 function Buttons() {
 	return (
 		<div className="md-auth__button-container">
-			<Link className="md-auth__link" to="/login">
-				<button className="md-auth__button">Login</button>
-			</Link>
 			<Link className="md-auth__link" to="/register">
 				<button className="md-auth__button">Sign Up</button>
 			</Link>
