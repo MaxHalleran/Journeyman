@@ -48,8 +48,8 @@ export default class AuthStack extends React.Component {
 
 					<Switch>
 						<Route exact path="/">
-
-						</Route>
+      
+	                                          <Buttons />					</Route>
 						<Route path="/*">
 							<Back />
 						</Route>
