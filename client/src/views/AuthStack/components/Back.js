@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 function Buttons() {
 	return (
-		<div className="md-auth__button-container">
-			<Link className="md-auth__link" to="/">
-				<button className="md-auth__button">Back</button>
+		<div className="md-auth__container md-auth__buttons-container">
+			<Link className="md-auth__button" to="/">
+				Back
 			</Link>
 		</div>
 	);

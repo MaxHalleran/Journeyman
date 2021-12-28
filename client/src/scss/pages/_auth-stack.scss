@@ -33,15 +33,20 @@
 		flex-direction: column;
 		align-items: center;
 	}
-	&button-container {
+	&container {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: stretch;
 		justify-content: flex-start;
+		margin: 0;
+		min-width: 300px;
 	}
-
-	&link {
-		margin: 25px 25px 0 25px;
+	&buttons-container {
+		margin-top: 50px;
+	}
+	&text-link {
+		margin-top: 15px;
+		text-align: center;
 	}
 
 	&button {
@@ -61,12 +66,11 @@
 		font-weight: 400;
 		color: $color--dark;
 		color: $color--dark-metal;
+		text-align: center;
 
 		&:hover {
-			// @include border($border-color: $color--dark, $border-radius: 2px, $border-width: 3px);
-			background-color: $color--dark-metal;
-			color: $color--white-metal;
-			box-shadow: inset -10px -10px 20px 5px rgba($color--black, 0.3);
+			background-color: $color--white;
+			box-shadow: inset -10px -10px 20px 5px rgba($color--white-metal, 0.3);
 		}
 	}
 
@@ -76,17 +80,10 @@
 }
 
 .md-auth-form__ {
-	&container {
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
-		justify-content: flex-start;
-		margin: 0;
-	}
 	&label {
 		text-align: left;
 		font-size: 14px;
-		margin-top:25px;
+		margin-top:15px;
 	}
 	&input {
 		@include border($border-color: $color--dark, $border-radius: 0, $border-width: 1px);

@@ -44,9 +44,9 @@ export default class Login extends React.Component {
 
     render () {
         return (
-            <div>
-                <p className="md-auth-title__subheader">Log in to your account</p>
-                <form className="md-auth-form__container" onSubmit={this.onSubmit}>
+            <div className="md-auth__container">
+                <h2 className="md-auth-title__subheader">Log in to your account</h2>
+                <form className="md-auth__container" onSubmit={this.onSubmit}>
                     <label className="md-auth-form__label" htmlFor="email">Email</label>
                     <input
                         className="md-auth-form__input"

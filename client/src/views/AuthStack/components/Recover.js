@@ -45,13 +45,14 @@ export default class Recover extends React.Component {
 
     render () {
         return (
-            <form className="md-auth-form__container" onSubmit={this.onSubmit}>
-                <h2 className="md-auth-form__title">Recover Your Account</h2>
+            <form className="md-auth__container" onSubmit={this.onSubmit}>
+                <h2 className="md-auth-title__subheader">Recover Your Account</h2>
+                <label className="md-auth-form__label" htmlFor="email">Email</label>
                 <input
                     className="md-auth-form__input"
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    // placeholder="Email"
                     autoComplete="email"
                     value={this.state.email}
                     onChange={this.handleInputChange}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, /* Link */ } from "react-router-dom";
 
 import Back from './components/Back';
 import Buttons from './components/Buttons';
@@ -48,7 +48,7 @@ export default class AuthStack extends React.Component {
 
 					<Switch>
 						<Route exact path="/">
-
+							<Buttons />
 						</Route>
 						<Route path="/*">
 							<Back />
